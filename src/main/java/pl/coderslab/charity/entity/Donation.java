@@ -1,8 +1,12 @@
 package pl.coderslab.charity.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -30,9 +34,10 @@ public class Donation {
 
     private String zipCode;
 
-    private Date pickUpDate;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate pickUpDate;
 
-    private Time pickUpTime;
+    private LocalTime pickUpTime;
 
     private String pickUpComment;
 }
