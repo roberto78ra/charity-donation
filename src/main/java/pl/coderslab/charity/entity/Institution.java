@@ -2,6 +2,7 @@ package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Table(name = "institution")
@@ -18,7 +19,6 @@ public class Institution {
     @NotEmpty
     private String description;
 
-    @OneToOne
-    @JoinColumn(name = "donation_id")
-    private Donation donation;
+    @OneToMany(mappedBy = "institution")
+    private List<Donation> donationList;
 }

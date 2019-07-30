@@ -25,7 +25,8 @@ public class Donation {
     @OneToMany(mappedBy = "donation", cascade = CascadeType.ALL)
     private List<Category> categories;
 
-    @OneToOne(mappedBy = "donation", cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "institution_id")
     private Institution institution;
 
     private String street;
