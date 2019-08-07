@@ -14,12 +14,12 @@
 </head>
 <body>
 <%--<%@ include file = "include/header.jsp" %>--%>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="include/header.jsp"></jsp:include>
 
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${countQuantity}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -27,7 +27,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${institutionAmount}</em>
             <h3>Wspartych organizacji</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -83,20 +83,25 @@
     <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
             Możesz sprawdzić czym się zajmują.</p>
-
         <ul class="help--slides-items">
-            <c:forEach items="${allInstitutions}" var="item" begin="0" varStatus="status">
+            <c:forEach items="${allInstitutions}" var="item" varStatus="status">
+            <c:if test="${status.index %2 == 0}">
                 <li>
                     <div class="col">
-                        <div class="title">${status.begin} ${item.name}</div>
-                        <div class="subtitle">${status.begin} ${item.description}</div>
+                        <div class="title">Fundacja:${item.name}</div>
+                        <div class="subtitle">${item.description}</div>
                     </div>
-                    <div class="col"></div>
-                            <div class="title">${status.last} ${item.name}</div>
-                            <div class="subtitle">${status.last} ${item.description}</div>
-                            </div>
+            </c:if>
+            <c:if test="${status.index %2 != 0}">
+                    <div class="col">
+                        <div class="title">Fundacja:${item.name}</div>
+                        <div class="subtitle">${item.description}</div>
+                    </div>
                 </li>
+            </c:if>
             </c:forEach>
+        </ul>
+    </div>
             <%--<li>--%>
                 <%--<div class="col">--%>
                     <%--<div class="title">Fundacja "Dbam o Zdrowie"</div>--%>
@@ -117,14 +122,11 @@
                 <%--<div class="col">--%>
                     <%--<div class="title">Fundacja “Bez domu”</div>--%>
                     <%--<div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
-                <%--</div>        --%>
-                <%----%>
-            <%--</li>--%>
-        </ul>
-    </div>
+                <%--</div>--%>
 
+            <%--</li>--%>
 </section>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="include/footer.jsp"></jsp:include>
 <script src="<c:url value="resources/js/app.js"/>"></script>
 </body>
 </html>

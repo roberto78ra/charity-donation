@@ -21,7 +21,27 @@ public class Category {
     @JoinColumn(name="donation_id")
     private Donation donation;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Donation getDonation() {
+        return donation;
+    }
+
+    public void setDonation(Donation donation) {
+        this.donation = donation;
+    }
 }
